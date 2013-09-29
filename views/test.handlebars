@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+
+	<title>browser acceleration demo - mitsuruog</title>
+
+	<meta name="description" content="Demonstration of the acceleration sensor in browser using the slide.">
+	<meta name="author" content="mitsuruog">
+
+</head>
+
+<body>
+
+<div id="main">
+
+	<div class="motion">
+
+	</div>
+	<ul class="acceleration">
+		加速度
+		<li>x:<span class="x"></span></li>
+		<li>y:<span class="y"></span></li>
+		<li>z:<span class="z"></span></li>
+	</ul>
+
+	<ul class="inclination">
+		傾き
+		<li>x:<span class="x"></span>:<span class="rx"></span></li>
+		<li>y:<span class="y"></span>:<span class="ry"></span></li>
+		<li>z:<span class="z"></span>:<span class="rz"></span></li>
+	</ul>
+
+	<ul class="rotation">
+		回転値
+		<li>x:<span class="x"></span></li>
+		<li>y:<span class="y"></span></li>
+		<li>z:<span class="z"></span></li>
+	</ul>
+
+</div>
+
+
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/contoroller.js"></script>
+
+</body>
+</html>

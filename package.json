@@ -1,0 +1,19 @@
+{
+  "name": "browser-acceleration-demo",
+  "version": "0.0.0",
+  "description": "Demonstration of the acceleration sensor in browser using the slide.",
+  "main": "add.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "",
+  "author": "mitsuruog",
+  "license": "MIT",
+  "dependencies": {
+    "reveal.js": "~2.5.0",
+    "express": "~3.4.0",
+    "socket.io": "~0.9.16",
+    "handlebars": "~1.0.12",
+    "consolidate": "~0.9.1"
+  }
+}

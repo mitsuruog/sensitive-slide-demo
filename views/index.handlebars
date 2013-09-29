@@ -1,0 +1,624 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+
+	<title>browser acceleration demo - mitsuruog</title>
+
+	<meta name="description" content="Demonstration of the acceleration sensor in browser using the slide.">
+	<meta name="author" content="mitsuruog">
+
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<link rel="stylesheet" href="/assets/css/reveal.js/reveal.min.css">
+	<link rel="stylesheet" href="/assets/css/reveal.js/theme/default.css" id="theme">
+
+	<!-- For syntax highlighting -->
+	<link rel="stylesheet" href="/assets/css/reveal.js/lib/zenburn.css">
+
+	<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+	<script>
+		document.write( '<link rel="stylesheet" href="/assets/css/reveal.js/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+	</script>
+
+	<!--[if lt IE 9]>
+	<script src="/assets/js/reveal.js/lib/js/html5shiv.js"></script>
+	<![endif]-->
+</head>
+
+<body>
+
+
+<div class="reveal">
+<!-- Any section element inside of this container is displayed as a slide -->
+
+
+<div class="slides">
+<section>
+	<h2 style="max-height: none; max-width: none; position: absolute; width: 413px; height: 531px; z-index: 4; left: 65px; top: 70px; " class="absolute-element">
+		<img src="https://s3.amazonaws.com/media-p.slid.es/uploads/mitsuruog/images/101773/loge.png">
+		<br>
+	</h2>
+	<div style="text-align: right; ">
+		<br>
+	</div>
+	<div style="text-align: right; ">
+		<font style="font-size: 72px;">HTML5 &amp;</font>
+	</div>
+	<div style="text-align: right; ">
+		<font style="font-size: 72px;">&nbsp;Acceleration&nbsp;<span>&amp;</span>
+		</font>
+	</div>
+	<div style="text-align: right; ">
+		<font>
+			<span style="font-size: 72px;">&nbsp;</span>
+		</font>
+	</div>
+	<div style="text-align: right; ">
+		<font>
+			<font style="font-size: 112px;">ME</font>
+		</font>
+	</div>
+	<div style="text-align: right; ">
+		<br>
+	</div>
+	<div style="text-align: right; ">
+		<br>
+	</div>
+	<div style="text-align: right; ">2013･9･28　社内合同勉強会</div>
+	<div style="text-align: right; ">小川　充（@mitsuruog）</div>
+</section>
+<section>
+	<p>
+		<font style="font-size: 54px;">自己紹介</font>
+	</p>
+	<div style="text-align: right; ">
+		<br>
+	</div>
+	<div style="text-align: right; ">
+		<br>
+	</div>
+	<div style="text-align: right; ">
+		<br>
+	</div>
+	<div style="text-align: right; ">
+		<br>
+	</div>
+	<div style="text-align: right; ">
+		<br>
+	</div>
+	<div style="text-align: right; ">
+		<br>
+	</div>
+	<div style="text-align: right; ">
+		<br>
+	</div>
+	<div style="text-align: center; ">
+		<br>
+	</div>
+	<div style="text-align: center; ">
+		<br>
+	</div>
+	<div style="text-align: center; ">小川　充（37歳）</div>
+	<div style="text-align: center; ">株式会社クレスコ所属</div>
+	<div style="text-align: center; ">フロントエンジニア</div>
+	<img src="https://s3.amazonaws.com/media-p.slid.es/uploads/mitsuruog/images/101797/github.png" class="absolute-element" style="position: absolute; max-height: none; max-width: none; width: 573.821870838771px; height: 338.72279144369026px; z-index: 4; left: 164px; top: 88px; ">
+</section>
+<section>
+	<p>
+    <span>
+        <font style="font-size: 54px;">最近の私</font>
+    </span>
+	</p>
+	<div>
+		<img src="https://s3.amazonaws.com/media-p.slid.es/uploads/mitsuruog/images/101794/STOP_____________________.png" style="width: 586.6276230688733px; height: 352.0619965087274px; max-height: none; max-width: none; ">
+	</div>
+	<div>
+	</div>
+	<div>
+		<span>今年はテラ激務の中</span>
+	</div>
+	<div>
+		<span>いろいろやっていたので</span>
+	</div>
+	<div>
+		<span>ちょっと、振り返ってまとめてみた。</span>
+		<br>
+	</div>
+</section>
+<section>
+	<h3>社外コミュニティ</h3>
+	<div>
+		<br>
+	</div>
+	<div>HTML5ｊ　えんぷら部</div>
+	<div>業務システムエンジニアのためのHTML5勉強会</div>
+	<div>企画・運営</div>
+	<div>
+		<br>
+	</div>
+	<div>
+		<br>
+	</div>
+	<div>
+		<div style="font-size: 35.43307113647461px; font-style: normal; font-variant: normal;">enja-OSS</div>
+		<div style="font-size: 35.43307113647461px; font-style: normal; font-variant: normal;">オープンソースのドキュメント翻訳</div>
+	</div>
+</section>
+<section>
+	<p>
+		<font style="font-size: 54px;">Javascript Style Guide（翻訳）</font>
+	</p>
+	<div>
+		<img src="https://s3.amazonaws.com/media-p.slid.es/uploads/mitsuruog/images/101780/Javacript_style_guide_by_mitsuruog.png" style="width: 787.1806151601374px; height: 274.415812429537px; max-height: none; max-width: none; ">
+		<br>
+	</div>
+	<div>
+		<a href="https://github.com/mitsuruog/javacript-style-guide">https://github.com/mitsuruog/javacript-style-guide</a>
+		<br>
+	</div>
+	<div class="fragment" data-fragment-index="0">
+		<img src="https://s3.amazonaws.com/media-p.slid.es/uploads/mitsuruog/images/101781/I_am_mitsuruog__Airbnb_JavaScript.png" style="width: 489.4592482518894px; height: 173.24749016931307px; max-height: none; max-width: none; ">本家公認<br>
+	</div>
+</section>
+<section>
+	<p>
+		<font style="font-size: 54px;">
+			<font>Backbone.js</font>のチュートリ<span>アル</span>
+		</font>
+	</p>
+	<p>
+		<br>
+	</p>
+	<p>
+		<img src="https://s3.amazonaws.com/media-p.slid.es/uploads/mitsuruog/images/101783/mitsuruog_SPA_with_Backbone.png" style="font-size: 36.60322189331055px; font-style: normal; font-variant: normal; width: 774.2243015431973px; height: 316.2147387350519px; max-height: none; max-width: none; ">
+	</p>
+	<p>
+		<a href="https://github.com/mitsuruog/SPA-with-Backbone">https://github.com/mitsuruog/SPA-with-Backbone</a>
+		<br>
+	</p>
+	<p class="fragment" data-fragment-index="0">
+		<span>実は。。。他社採用されてます！</span>
+		<br>
+	</p>
+</section>
+<section>
+	<p>
+		<font style="font-size: 54px;">
+			<span>Chrome Extentions公開</span>
+		</font>
+	</p>
+	<p>
+		<font style="font-size: 54px;">
+			<img src="https://s3.amazonaws.com/media-p.slid.es/uploads/mitsuruog/images/101785/co_meeting_Notifier.png" style="width: 827.6631858102753px; height: 309.61688612402213px; max-height: none; max-width: none; ">
+    <span>
+        <br>
+    </span>
+		</font>
+	</p>
+	<p>
+		<font>
+			<font style="font-size: 32px;">
+				<a href="https://chrome.google.com/webstore/detail/co-meeting-notifier/gcncenlmfhkngpkgafognfofpanojolb">https://chrome.google.com/webstore/detail/co-meeting-notifier/gcncenlmfhkngpkgafognfofpanojolb</a>
+			</font>
+			<br>
+		</font>
+	</p>
+	<p>co-meetingの未公開(β)API</p>
+	<p>認証部分はoAuth2.0の仕様書を読みながら実装</p>
+</section>
+<section>
+	<p style="text-align: center; ">
+		<font style="font-size: 54px;">勉強会企画&amp;講演</font>
+	</p>
+	<p style="text-align: center; ">
+		<font style="font-size: 54px;">
+			<br>
+		</font>
+	</p>
+	<p style="text-align: center; ">
+		<font style="font-size: 54px;">
+			<br>
+		</font>
+	</p>
+	<p style="text-align: center; ">
+		<font style="font-size: 54px;">
+			<br>
+		</font>
+	</p>
+	<p style="text-align: center; ">
+		<font style="font-size: 54px;">
+			<br>
+		</font>
+	</p>
+	<p style="text-align: center; ">
+		<font style="font-size: 54px;">
+			<br>
+		</font>
+	</p>
+	<p style="text-align: center; ">
+		<font style="font-size: 54px;">
+			<br>
+		</font>
+	</p>
+	<p style="text-align: center; ">
+		<font style="font-size: 54px;">
+			<br>
+		</font>
+	</p>
+	<p style="text-align: center; ">
+		<font style="font-size: 54px;">
+			<br>
+		</font>
+	</p>
+	<p style="text-align: right; position: absolute; width: 588.9458272327965px; height: 432px; z-index: 4; left: 172px; top: 73px; max-height: none; max-width: none; " class="absolute-element">
+		<font style="font-size: 32px;">
+			<img src="https://s3.amazonaws.com/media-p.slid.es/uploads/mitsuruog/images/101787/_____________Struts__________________HTML5____04_____.png" style="font-style: normal; font-variant: normal; text-align: center; font-size: 31.72279167175293px; width: 508.5187372929888px; height: 393.7120544988391px; max-height: none; max-width: none; ">
+		</font>
+	</p>
+	<p style="text-align: center; ">
+		<span style="font-size: 32px;">9/9　HTML5jえんぷら部と</span>
+		<span>JJUGと共催の勉強会で</span>
+	</p>
+	<p style="text-align: center; ">
+		<span style="font-size: 32px;">企画＆オープニングトーク</span>
+		<span style="font-size: 32px;">してきました。</span>
+	</p>
+	<p style="text-align: center; ">
+		<a href="http://gihyo.jp/news/report/2013/09/1901" style="font-size: 32px;">http://gihyo.jp/news/report/2013/09/1901</a>
+		<br>
+	</p>
+</section>
+<section>
+	<p>
+		<br>
+	</p>
+	<p>
+		<br>
+	</p>
+	<p>
+		<br>
+	</p>
+	<p>
+		<br>
+	</p>
+	<p>
+		<span>もっとたくさんあるんだけど</span>
+	</p>
+	<p>
+		<span>あとは割愛・・・</span>
+		<br>
+	</p>
+</section>
+<section>
+	<p>
+		<font style="font-size: 54px;">これからの私</font>
+	</p>
+	<p>
+		<br>
+	</p>
+	<p>
+		<img src="https://si0.twimg.com/profile_images/378800000420130676/baddbb3a50255bcba2b2042620c4381b.png" style="font-size: 54px; ">
+		<br>
+	</p>
+	<p>今年もあと2ヶ月ですが</p>
+	<p>頑張りますよ～</p>
+</section>
+<section>
+	<p>
+		<font style="font-size: 54px;">
+			<span>ハンズオン</span>
+		</font>
+	</p>
+	<p>
+		<font style="font-size: 54px;">
+    <span>
+        <br>
+    </span>
+		</font>
+	</p>
+	<p>
+		<img src="https://s3.amazonaws.com/media-p.slid.es/uploads/mitsuruog/images/101815/_______HTML5____GitHub_CSS_Sass_Compass________ATND.png" style="width: 705.065485756723px; height: 248.13323556277274px; max-height: none; max-width: none; ">
+		<br>
+	</p>
+	<p>10/17と10/24開催</p>
+	<p>フロントエンジニアとしてチューターで参加します</p>
+</section>
+<section>
+	<p>
+		<font style="font-size: 42px;">チュートリアル＆ハンズオン（Coming soon!!）</font>
+	</p>
+	<p>
+		<img src="https://s3.amazonaws.com/media-p.slid.es/uploads/mitsuruog/images/101818/mitsuruog_struts_to_javaee6.png">
+		<br>
+	</p>
+	<p>
+		<a href="https://github.com/mitsuruog/struts-to-javaee6">https://github.com/mitsuruog/struts-to-javaee6</a>
+		<br>
+	</p>
+	<p>Java EE6のチュートリアルを公開します。</p>
+	<p class="fragment">社内でハンズオンしたいな（3日くらい）。</p>
+</section>
+<section>
+	<p>
+		<span style="font-size: 53.68472671508789px;">講演</span>
+	</p>
+	<img src="https://s3.amazonaws.com/media-p.slid.es/uploads/mitsuruog/images/101825/_________JJUG_CCC_2013_Fall_Call_for_Papers_____Java________.png">
+	<div>11/9（土）　JJUG　CCCにて講演</div>
+	<div>
+		<br>
+	</div>
+	<div class="fragment" data-fragment-index="0">フロントエンドから見た</div>
+	<div class="fragment" data-fragment-index="0">これからのJavaWeb開発について話します。</div>
+</section>
+<section>
+	<p>
+		<font style="font-size: 42px;">
+			<br>
+		</font>
+	</p>
+	<p>
+		<font style="font-size: 42px;">
+			<br>
+		</font>
+	</p>
+	<p>
+		<span style="font-size: 42px;">で、</span>
+		<br>
+	</p>
+	<p>
+		<font style="font-size: 42px;">やっと加速度センサーの話ですよ～</font>
+	</p>
+	<p>
+		<font style="font-size: 42px;">
+			<br>
+		</font>
+	</p>
+	<p>
+		<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnjyJHo9WRF4sCpDqXNk1JJv2dh7PNLferyBnnQx8NRaEhsRyD" style="width: 436.1434061138447px; height: 224.1249388326605px; max-height: none; max-width: none;">
+		<br>
+	</p>
+</section>
+<section>
+	<p>
+		<font style="font-size: 42px;">加速度センサー</font>
+	</p>
+	<p>
+		<font style="font-size: 32px;">
+			<br>
+		</font>
+	</p>
+	<p>
+		<font style="font-size: 32px;">最近のスマートデバイスには普通に搭載されている。</font>
+	</p>
+	<p>
+		<font style="font-size: 32px;">HTML5のDeviceOrientation Eventで値を取得できる。</font>
+	</p>
+	<p>
+		<font style="font-size: 32px;">
+			<img src="https://s3.amazonaws.com/media-p.slid.es/uploads/mitsuruog/images/101867/Can_I_use..._Support_tables_for_HTML5__CSS3__etc.png" style="width: 543.3456025970897px; height: 244.37237660718466px; max-height: none; max-width: none;">
+			<br>
+		</font>
+	</p>
+	<p>
+		<font style="font-size: 32px;">
+			<a href="http://caniuse.com/#search=DeviceOrientation">http://caniuse.com/#search=DeviceOrientation</a>
+			<br>
+		</font>
+	</p>
+	<p>
+
+	</p>
+</section>
+<section>
+	<p>
+		<font style="font-size: 42px;">加速度センサーとジャイロスコープ</font>
+	</p>
+	<p>
+		<br>
+	</p>
+	<p class="absolute-element" style="position: absolute; width: 256px; height: 46px; z-index: 9; left: 514px; top: 149px;">加速度センサー</p>
+	<p class="absolute-element" style="position: absolute; width: 364px; height: 46px; z-index: 5; left: 468px; top: 218px;">（加速度、加速度加味）</p>
+	<p class="absolute-element" style="position: absolute; width: 375px; height: 268px; z-index: 10; left: 50px; top: 90px;">
+		<img src="http://www.atmarkit.co.jp/fsmart/articles/ios_sensor02/accelerometer.jpg" style="width: 334.5498059261961px; height: 230.63055132655995px; max-height: none; max-width: none;">
+		<br>
+	</p>
+	<p>
+		<br>
+	</p>
+	<p class="absolute-element" style="position: absolute; width: 264px; height: 46px; z-index: 6; left: 503px; top: 446px;">ジャイロスコープ</p>
+	<p class="absolute-element" style="position: absolute; width: 230px; height: 46px; z-index: 4; left: 518px; top: 514px;">（回転加速度）</p>
+	<p class="absolute-element" style="position: absolute; width: 399px; height: 255.4973157637872px; z-index: 8; left: 46px; top: 360px; max-height: none; max-width: none;">
+		<img src="http://www.atmarkit.co.jp/fsmart/articles/ios_sensor02/gyro.jpg" style="width: 359.32802172780566px; height: 247.7120544988391px; max-height: none; max-width: none;">
+		<br>
+	</p>
+	<p>
+		<br>
+	</p>
+</section>
+<section>
+	<p>
+		<font style="font-size: 42px;">実際の測定値</font>
+	</p>
+	<ul class="acceleration" style="display: block;">
+		加速度
+		<li>x:<span class="x"></span></li>
+		<li>y:<span class="y"></span></li>
+		<li>z:<span class="z"></span></li>
+	</ul>
+
+	<ul class="inclination" style="display: block;">
+		加速度（重力加味）
+		<li>x:<span class="x"></span></li>
+		<li>y:<span class="y"></span></li>
+		<li>z:<span class="z"></span></li>
+	</ul>
+
+	<ul class="rotation" style="display: block;">
+		回転加速度
+		<li>x:<span class="x"></span></li>
+		<li>y:<span class="y"></span></li>
+		<li>z:<span class="z"></span></li>
+	</ul>
+</section>
+<section>
+	<p>
+		<span style="font-size: 41.48365020751953px;">フィルターしてから使うケースが多い</span>
+		<img src="http://android.ohwada.jp/wp-content/uploads/2011/09/20110829wave.jpg" style="font-style: normal; font-variant: normal; font-size: 41.48365020751953px; max-width: none; max-height: none; width: 384.17608194724227px; height: 330.99999983802894px;">
+	</p>
+	<p>
+	</p>
+	<p>
+		<font style="font-size: 32px;">ローパスフィルター
+		</font>
+	</p>
+	<p>
+		<font style="font-size: 32px;">LowP = 測定値 × 0.1 + LowP × 0.9</font>
+	</p>
+	<p>
+	</p>
+	<p>
+		<font style="font-size: 32px;">
+			<font>ハイパスフィルター</font>&nbsp;</font>
+	</p>
+	<p>
+		<font style="font-size: 32px;">HighP = 測定値 - LowP</font>
+	</p>
+</section>
+<section>
+	<p>
+		<font style="font-size: 42px;">6軸ベクトル計算がカオス</font>
+	</p>
+	<p>
+		<font style="font-size: 42px;">
+			<br>
+		</font>
+	</p>
+	<p class="absolute-element" style="position: absolute; width: 393px; height: 554px; z-index: 4; left: 119px; top: 93px;">
+		<img src="https://s3.amazonaws.com/media-p.slid.es/uploads/mitsuruog/images/103146/DeviceOrientation_Event_Specification.png" style="width: 352.78251034362466px; height: 515.9321618682876px; max-height: none; max-width: none;">
+		<br>
+	</p>
+	<p>
+		<font style="font-size: 42px;">
+			<br>
+		</font>
+	</p>
+	<p class="absolute-element" style="position: absolute; width: 10px; height: 46px; z-index: 4; left: 473px; top: 189px;">
+		<font style="font-size: 42px;">
+			<br>
+		</font>
+	</p>
+	<p class="absolute-element" style="position: absolute; width: 10px; height: 46px; z-index: 4; left: 473px; top: 245px;">
+		<font style="font-size: 42px;">
+			<br>
+		</font>
+	</p>
+	<p>
+		<font style="font-size: 42px;">
+			<br>
+		</font>
+	</p>
+	<p class="absolute-element" style="position: absolute; width: 148px; height: 46px; z-index: 4; left: 632px; top: 264px;">
+		<font style="font-size: 32px;">さーせん。</font>
+	</p>
+	<p class="absolute-element" style="position: absolute; width: 403px; height: 46px; z-index: 4; left: 515px; top: 334px;">
+		<font style="font-size: 32px;">デモは2軸しか使ってません。</font>
+	</p>
+</section>
+<section>
+	<p>デモ<font style="font-size: 42px;">のシステム構成</font>
+	</p>
+	<p>
+		<font style="font-size: 42px;">
+			<img src="https://s3.amazonaws.com/media-p.slid.es/uploads/mitsuruog/images/103175/Untitled_Untitled___Cacoo.png">
+			<br>
+		</font>
+	</p>
+</section>
+<section>
+	<p>
+		<font style="font-size: 42px;">おまけ</font>
+	</p>
+	<p>
+		<img src="https://s3.amazonaws.com/media-p.slid.es/uploads/mitsuruog/images/103190/three.js_webgl___materials___shaders__Fresnel_.png" style="width: 727.9458270708254px; height: 391.9121548192669px; max-height: none; max-width: none;">
+	</p>
+	<p>
+		<span style="font-size: 41.48365020751953px;">WebGLで割りと簡単に360度Viewを</span>
+	</p>
+	<p>
+		<span style="font-size: 41.48365020751953px;">作れるので、ちょっと動かしてみましょう。</span>
+	</p>
+	<p>
+<span style="font-size: 41.48365020751953px;">
+    <br>
+</span>
+	</p>
+	<p>
+<span style="font-size: 41.48365020751953px;">
+    <br>
+</span>
+	</p>
+</section>
+<section>
+	<p>
+		<br>
+	</p>
+	<p>
+		<br>
+	</p>
+	<p>
+		<br>
+	</p>
+	<p>
+		<br>
+	</p>
+	<p>
+		<br>
+	</p>
+	<p>ご清聴ありがとうございました。</p>
+</section>
+
+
+</div>
+
+</div>
+
+<script src="/assets/js/reveal.js/lib/head.min.js"></script>
+<script src="/assets/js/reveal.js/reveal.min.js"></script>
+
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/recever.js"></script>
+
+<script>
+
+	// Full list of configuration options available here:
+	// https://github.com/hakimel/reveal.js#configuration
+	Reveal.initialize({
+		controls: true,
+		progress: true,
+		history: true,
+		center: true,
+
+		theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+		transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+		// Optional libraries used to extend on reveal.js
+		dependencies: [
+			{ src: '/assets/js/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+			{ src: '/assets/js/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+			{ src: '/assets/js/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+			{ src: '/assets/js/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+			{ src: '/assets/js/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+			{ src: '/assets/js/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+		]
+	});
+
+</script>
+
+</body>
+</html>

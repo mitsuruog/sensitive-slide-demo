@@ -1,0 +1,19 @@
+@charset "utf-8";
+
+.button {
+        text-align: center;
+}
+
+.button > button {
+  height: 100px;
+  width: 100px;
+  font-size: 40px;
+  margin: 10px 50px;
+}
+
+.mouse-point {
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  opacity: .5;
+}
